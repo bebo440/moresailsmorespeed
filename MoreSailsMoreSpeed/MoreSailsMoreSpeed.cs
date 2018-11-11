@@ -5,6 +5,7 @@ using System.Reflection;
 using Harmony;
 using MoreSailsMoreSpeed.Patches;
 using UnityEngine;
+using System.Linq;
 
 namespace MoreSailsMoreSpeed
 {
@@ -13,7 +14,7 @@ namespace MoreSailsMoreSpeed
     [ModAuthor("Akitake")]
     [ModIconUrl("https://i.imgur.com/eaGHF1J.png")]
     [ModWallpaperUrl("https://i.imgur.com/D7OvpcL.png")]
-    [ModVersion("1.0.1")]
+    [ModVersion("1.0.2")]
     [RaftVersion("Update 8 (3288722)")]
     public class MoreSailsMoreSpeed : Mod
     {
@@ -28,7 +29,7 @@ namespace MoreSailsMoreSpeed
 			RConsole.registerCommand("sailsOpen", "Lower all sails", "sailsOpen", new Action(MoreSailsMoreSpeed.SailsOpen));
 			RConsole.registerCommand("sailsClose", "Raise all sails", "sailsClose", new Action(MoreSailsMoreSpeed.SailsClose));
 			RConsole.registerCommand("sailsDecay", "The exponent x for i/i^x (default: 1.9; constrained to 1 <= x <= 5)", "sailsDecay", new Action(this.SailsDecay));
-			CLIU.Echo("loaded!");
+            RConsole.Log("MoreSailSMoreSpeed loaded!");
 		}
 
 		public void OnModUnload()
@@ -36,7 +37,8 @@ namespace MoreSailsMoreSpeed
 			RConsole.unregisterCommand("sailsOpen");
 			RConsole.unregisterCommand("sailsClose");
 			RConsole.unregisterCommand("sailsDecay");
-			this.harmony.UnpatchAll(this.harmonyID);
+            //this.harmony.UnpatchAll(this.harmonyID);
+            RConsole.Log("MoreSailSMoreSpeed unloaded! (Requires restart to fully remove the effects this mod may cause to your game)");
             Destroy(this.gameObject);
 		}
 
