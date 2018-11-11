@@ -6,12 +6,10 @@ using UnityEngine;
 
 namespace MoreSailsMoreSpeed.Patches
 {
-	// Token: 0x02000005 RID: 5
 	[HarmonyPatch(typeof(Raft))]
 	[HarmonyPatch("FixedUpdate")]
 	internal class RaftFixedUpdatePatch
 	{
-		// Token: 0x0600001D RID: 29 RVA: 0x000028C8 File Offset: 0x00000AC8
 		private static bool Prefix(Raft __instance, ref Rigidbody ___body, ref float ___speed, ref StudioEventEmitter ___eventEmitter_idle, ref Vector3 ___previousPosition)
 		{
 			if (!Semih_Network.IsHost)
@@ -51,7 +49,6 @@ namespace MoreSailsMoreSpeed.Patches
 			return false;
 		}
 
-		// Token: 0x0400000C RID: 12
 		public static float rate = 1.9f;
 	}
 }
