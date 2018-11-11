@@ -5,7 +5,6 @@ using System.Reflection;
 using Harmony;
 using MoreSailsMoreSpeed.Patches;
 using UnityEngine;
-using System.Linq;
 
 namespace MoreSailsMoreSpeed
 {
@@ -18,27 +17,27 @@ namespace MoreSailsMoreSpeed
     [RaftVersion("Update 8 (3288722)")]
     public class MoreSailsMoreSpeed : Mod
     {
-		private void Start()
+		public void Start()
 		{
 			CLIU.CONSOLE_PREFIX = CLIU.Blue("[") + "MoreSailsMoreSpeed" + CLIU.Blue("] ");
-			this.harmony = HarmonyInstance.Create(this.harmonyID);
-			this.harmony.PatchAll(Assembly.GetExecutingAssembly());
-			this.settingsPath = Directory.GetCurrentDirectory() + "\\mods\\MoreSailsMoreSpeed.json";
+			harmony = HarmonyInstance.Create(harmonyID);
+			harmony.PatchAll(Assembly.GetExecutingAssembly());
+            this.settingsPath = Directory.GetCurrentDirectory() + "\\mods\\MoreSailsMoreSpeed.json";
 			this.settings = this.LoadSettings();
 			RaftFixedUpdatePatch.rate = this.settings.decayRateExponent;
 			RConsole.registerCommand("sailsOpen", "Lower all sails", "sailsOpen", new Action(MoreSailsMoreSpeed.SailsOpen));
 			RConsole.registerCommand("sailsClose", "Raise all sails", "sailsClose", new Action(MoreSailsMoreSpeed.SailsClose));
 			RConsole.registerCommand("sailsDecay", "The exponent x for i/i^x (default: 1.9; constrained to 1 <= x <= 5)", "sailsDecay", new Action(this.SailsDecay));
             RConsole.Log("MoreSailSMoreSpeed loaded!");
-		}
+        }
 
 		public void OnModUnload()
 		{
 			RConsole.unregisterCommand("sailsOpen");
 			RConsole.unregisterCommand("sailsClose");
 			RConsole.unregisterCommand("sailsDecay");
-            //this.harmony.UnpatchAll(this.harmonyID);
-            RConsole.Log("MoreSailSMoreSpeed unloaded! (Requires restart to fully remove the effects this mod may cause to your game)");
+            harmony.UnpatchAll(harmonyID);
+            RConsole.Log("MoreSailSMoreSpeed unloaded!");
             Destroy(this.gameObject);
 		}
 
@@ -146,9 +145,9 @@ namespace MoreSailsMoreSpeed
 			}
 		}
 
-		private readonly string harmonyID = "com.github.akitakekun.moresailsmorespeed";
+		public readonly string harmonyID = "com.github.akitakekun.moresailsmorespeed";
 
-		private HarmonyInstance harmony;
+		public HarmonyInstance harmony;
 
 		private Settings settings;
 
