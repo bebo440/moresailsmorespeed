@@ -1,5 +1,4 @@
-﻿using System;
-using Harmony;
+﻿using Harmony;
 using UnityEngine;
 
 namespace MoreSailsMoreSpeed.Patches
@@ -30,11 +29,11 @@ namespace MoreSailsMoreSpeed.Patches
                     {
                         if (__instance.open)
                         {
-                            MoreSailsMoreSpeedMod.SailsClose();
+                            MoreSailsMoreSpeed.SailsClose();
                         }
                         else
                         {
-                            MoreSailsMoreSpeedMod.SailsOpen();
+                            MoreSailsMoreSpeed.SailsOpen();
                         }
                     }
                 }
@@ -43,7 +42,7 @@ namespace MoreSailsMoreSpeed.Patches
                 {
                     if (___localPlayer.PlayerScript.MouseLookIsActive())
                         ___localPlayer.PlayerScript.SetMouseLookScripts(false);
-                    MoreSailsMoreSpeedMod.SailsRotate(Input.GetAxis("Mouse X"));
+                    MoreSailsMoreSpeed.SailsRotate(Input.GetAxis("Mouse X"));
                 }
                 else if (MyInput.GetButtonUp("Rotate"))
                 {

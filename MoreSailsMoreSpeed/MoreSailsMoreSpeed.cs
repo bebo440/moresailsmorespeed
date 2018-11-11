@@ -8,15 +8,15 @@ using UnityEngine;
 
 namespace MoreSailsMoreSpeed
 {
-	[ModTitle("MoreSailsMoreSpeed")]
-	[ModDescription("More sails can make your raft faster.")]
-	[ModAuthor("Akitake")]
+    [ModTitle("MoreSailsMoreSpeed")]
+    [ModDescription("More sails can make your raft faster.")]
+    [ModAuthor("Akitake")]
     [ModIconUrl("https://i.imgur.com/eaGHF1J.png")]
     [ModWallpaperUrl("https://i.imgur.com/D7OvpcL.png")]
     [ModVersion("1.0.0")]
     [RaftVersion("Update 8 (3288722)")]
-    public class MoreSailsMoreSpeedMod : Mod
-	{
+    public class MoreSailsMoreSpeed : Mod
+    {
 		private void Start()
 		{
 			CLIU.CONSOLE_PREFIX = CLIU.Blue("[") + "MoreSailsMoreSpeed" + CLIU.Blue("] ");
@@ -25,8 +25,8 @@ namespace MoreSailsMoreSpeed
 			this.settingsPath = Directory.GetCurrentDirectory() + "\\mods\\MoreSailsMoreSpeed.json";
 			this.settings = this.LoadSettings();
 			RaftFixedUpdatePatch.rate = this.settings.decayRateExponent;
-			RConsole.registerCommand("sailsOpen", "Lower all sails", "sailsOpen", new Action(MoreSailsMoreSpeedMod.SailsOpen));
-			RConsole.registerCommand("sailsClose", "Raise all sails", "sailsClose", new Action(MoreSailsMoreSpeedMod.SailsClose));
+			RConsole.registerCommand("sailsOpen", "Lower all sails", "sailsOpen", new Action(MoreSailsMoreSpeed.SailsOpen));
+			RConsole.registerCommand("sailsClose", "Raise all sails", "sailsClose", new Action(MoreSailsMoreSpeed.SailsClose));
 			RConsole.registerCommand("sailsDecay", "The exponent x for i/i^x (default: 1.9; constrained to 1 <= x <= 5)", "sailsDecay", new Action(this.SailsDecay));
 			CLIU.Echo("loaded!");
 		}
@@ -37,7 +37,7 @@ namespace MoreSailsMoreSpeed
 			RConsole.unregisterCommand("sailsClose");
 			RConsole.unregisterCommand("sailsDecay");
 			this.harmony.UnpatchAll(this.harmonyID);
-            UnityEngine.Object.Destroy(base.gameObject);
+            Destroy(this.gameObject);
 		}
 
 		public static void SailsRotate(float axis)
