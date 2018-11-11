@@ -13,7 +13,7 @@ namespace MoreSailsMoreSpeed
     [ModAuthor("Akitake")]
     [ModIconUrl("https://i.imgur.com/eaGHF1J.png")]
     [ModWallpaperUrl("https://i.imgur.com/D7OvpcL.png")]
-    [ModVersion("1.0.0")]
+    [ModVersion("1.0.1")]
     [RaftVersion("Update 8 (3288722)")]
     public class MoreSailsMoreSpeed : Mod
     {
