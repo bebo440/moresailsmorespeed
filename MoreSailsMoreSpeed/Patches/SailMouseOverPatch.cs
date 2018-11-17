@@ -9,12 +9,12 @@ namespace MoreSailsMoreSpeed.Patches
     {
         private static bool Prefix(Sail __instance, ref CanvasHelper ___canvas, ref Network_Player ___localPlayer)
         {
+            if (!MyInput.GetButton("Sprint"))
+            {
+                return true;
+            }
             if (Helper.LocalPlayerIsWithinDistance(__instance.transform.position, Player.UseDistance) && CanvasHelper.ActiveMenu == MenuType.None)
             {
-                if (!MyInput.GetButton("Sprint"))
-                {
-                    return true;
-                }
                 if (!__instance.open)
                 {
                     ___canvas.displayTextManager.ShowText(Helper.GetTerm("Game/Open", false), MyInput.Keybinds["Interact"].MainKey, 0, true);
@@ -42,7 +42,7 @@ namespace MoreSailsMoreSpeed.Patches
                 {
                     if (___localPlayer.PlayerScript.MouseLookIsActive())
                         ___localPlayer.PlayerScript.SetMouseLookScripts(false);
-                    MoreSailsMoreSpeed.SailsRotate(Input.GetAxis("Mouse X"));
+                    MoreSailsMoreSpeed.SailsRotate(Input.GetAxis("Mouse X"), __instance);
                 }
                 else if (MyInput.GetButtonUp("Rotate"))
                 {

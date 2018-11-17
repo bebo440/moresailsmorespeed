@@ -13,7 +13,7 @@ namespace MoreSailsMoreSpeed
     [ModAuthor("Akitake")]
     [ModIconUrl("https://i.imgur.com/eaGHF1J.png")]
     [ModWallpaperUrl("https://i.imgur.com/D7OvpcL.png")]
-    [ModVersion("1.0.3")]
+    [ModVersion("1.0.4")]
     [RaftVersion("Update 8 (3288722)")]
     public class MoreSailsMoreSpeed : Mod
     {
@@ -67,7 +67,53 @@ namespace MoreSailsMoreSpeed
 			}
 		}
 
-		public static void SailsOpen()
+        public static void SailsRotate(float axis, Sail __instance)
+        {
+            Semih_Network value = ComponentManager<Semih_Network>.Value;
+            List<Sail> allSails = Sail.AllSails;
+            Type[] array = new Type[]
+            {
+                typeof(float)
+            };
+            object[] parameters = new object[]
+            {
+                axis
+            };
+
+            if (Semih_Network.IsHost)
+            {
+                AccessTools.Method("Sail:Rotate", array, null).Invoke(__instance, parameters);
+            }
+            else
+            {
+                Message message = new Message_Sail_Rotate(Messages.Sail_Rotate, __instance, axis);
+                value.SendP2P(value.HostID, message, Steamworks.EP2PSend.k_EP2PSendReliable, NetworkChannel.Channel_Game);
+            }
+
+            foreach (Sail sail in allSails)
+            {
+                if (__instance != sail)
+                {
+                    float _axis = (__instance.LocalRotation - sail.LocalRotation);
+                    object[] _parameters = new object[]
+                    {
+                        _axis
+                    };
+
+                    if (Semih_Network.IsHost)
+                    {
+                        AccessTools.Method("Sail:Rotate", array, null).Invoke(sail, _parameters);
+                    }
+                    else
+                    {
+                        Message message = new Message_Sail_Rotate(Messages.Sail_Rotate, sail, _axis);
+                        value.SendP2P(value.HostID, message, Steamworks.EP2PSend.k_EP2PSendReliable, NetworkChannel.Channel_Game);
+                    }
+                }
+            }
+        }
+
+        public static void SailsOpen()
 		{
 			Semih_Network value = ComponentManager<Semih_Network>.Value;
 			List<Sail> allSails = Sail.AllSails;
