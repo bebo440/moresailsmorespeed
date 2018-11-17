@@ -129,7 +129,7 @@ internal class CLIU
 
     public static string[] SplitLastCommand()
     {
-        return RConsole.lastCommands.LastOrDefault<string>().Split(new[] { "" }, StringSplitOptions.RemoveEmptyEntries);
+        return RConsole.lastCommands.LastOrDefault<string>().Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
     }
 
     public static string Red(string text)
