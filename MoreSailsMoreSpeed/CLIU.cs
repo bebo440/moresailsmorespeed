@@ -133,77 +133,77 @@ internal class CLIU
     }
 
     public static string Red(string text)
-	{
-		return CLIU.Colorize(CLIU.RED, text);
-	}
+    {
+        return CLIU.Colorize(CLIU.RED, text);
+    }
 
-	public static string Green(string text)
-	{
-		return CLIU.Colorize(CLIU.GREEN, text);
-	}
+    public static string Green(string text)
+    {
+        return CLIU.Colorize(CLIU.GREEN, text);
+    }
 
-	public static string White(string text)
-	{
-		return CLIU.Colorize(CLIU.WHITE, text);
-	}
+    public static string White(string text)
+    {
+        return CLIU.Colorize(CLIU.WHITE, text);
+    }
 
-	public static string Orange(string text)
-	{
-		return CLIU.Colorize(CLIU.ORANGE, text);
-	}
+    public static string Orange(string text)
+    {
+        return CLIU.Colorize(CLIU.ORANGE, text);
+    }
 
-	public static string Blue(string text)
-	{
-		return CLIU.Colorize(CLIU.BLUE, text);
-	}
+    public static string Blue(string text)
+    {
+        return CLIU.Colorize(CLIU.BLUE, text);
+    }
 
-	public static string ColorizeBool(bool setting)
-	{
-		if (!setting)
-		{
-			return CLIU.Red("false");
-		}
-		return CLIU.Green("TRUE");
-	}
+    public static string ColorizeBool(bool setting)
+    {
+        if (!setting)
+        {
+            return CLIU.Red("false");
+        }
+        return CLIU.Green("TRUE");
+    }
 
-	public static string ColorizeRange(string min, string max)
-	{
-		return string.Concat(new string[]
-		{
-			CLIU.Blue(min),
-			CLIU.White(" <= "),
-			"x",
-			CLIU.White(" <= "),
-			CLIU.Blue(max)
-		});
-	}
+    public static string ColorizeRange(string min, string max)
+    {
+        return string.Concat(new string[]
+        {
+            CLIU.Blue(min),
+            CLIU.White(" <= "),
+            "x",
+            CLIU.White(" <= "),
+            CLIU.Blue(max)
+        });
+    }
 
-	public static string Colorize(string color, string text)
-	{
-		return string.Concat(new string[]
-		{
-			"<color=",
-			color,
-			">",
-			text,
-			"</color>"
-		});
-	}
+    public static string Colorize(string color, string text)
+    {
+        return string.Concat(new string[]
+        {
+            "<color=",
+            color,
+            ">",
+            text,
+            "</color>"
+        });
+    }
 
-	public static void Echo(string msg)
-	{
-		RConsole.Log(CLIU.CONSOLE_PREFIX + msg);
-	}
+    public static void Echo(string msg)
+    {
+        RConsole.Log(CLIU.CONSOLE_PREFIX + msg);
+    }
 
-	public static string WHITE = "#ffffff";
+    public static string WHITE = "#ffffff";
 
-	public static string ORANGE = "#ff8000";
+    public static string ORANGE = "#ff8000";
 
-	public static string BLUE = "#0080ff";
+    public static string BLUE = "#0080ff";
 
-	public static string GREEN = "#009926";
+    public static string GREEN = "#009926";
 
-	public static string RED = "#ff0000";
+    public static string RED = "#ff0000";
 
-	public static string CONSOLE_PREFIX = "";
+    public static string CONSOLE_PREFIX = "";
 }
