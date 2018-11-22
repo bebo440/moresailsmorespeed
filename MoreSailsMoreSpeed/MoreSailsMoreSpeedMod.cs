@@ -13,7 +13,7 @@ namespace MoreSailsMoreSpeed
     [ModAuthor("Akitake")]
     [ModIconUrl("https://i.imgur.com/eaGHF1J.png")]
     [ModWallpaperUrl("https://i.imgur.com/D7OvpcL.png")]
-    [ModVersion("1.0.6")]
+    [ModVersion("1.0.7")]
     [RaftVersion("Update 8 (3288722)")]
     public class MoreSailsMoreSpeedMod : Mod
     {
@@ -39,9 +39,6 @@ namespace MoreSailsMoreSpeed
 
         public void OnModUnload()
         {
-            RConsole.unregisterCommand("sailsOpen");
-            RConsole.unregisterCommand("sailsClose");
-            RConsole.unregisterCommand("sailsDecay");
             CLIU.Echo("unloaded!");
             this.harmony.UnpatchAll(this.harmonyID);
             UnityEngine.Object.Destroy(base.gameObject);
