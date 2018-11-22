@@ -29,11 +29,11 @@ namespace MoreSailsMoreSpeed.Patches
                     {
                         if (__instance.open)
                         {
-                            MoreSailsMoreSpeed.SailsClose();
+                            MoreSailsMoreSpeedMod.SailsClose();
                         }
                         else
                         {
-                            MoreSailsMoreSpeed.SailsOpen();
+                            MoreSailsMoreSpeedMod.SailsOpen();
                         }
                     }
                 }
@@ -42,7 +42,7 @@ namespace MoreSailsMoreSpeed.Patches
                 {
                     if (___localPlayer.PlayerScript.MouseLookIsActive())
                         ___localPlayer.PlayerScript.SetMouseLookScripts(false);
-                    MoreSailsMoreSpeed.SailsRotate(Input.GetAxis("Mouse X"), __instance);
+                    MoreSailsMoreSpeedMod.SailsRotate(Input.GetAxis("Mouse X"), __instance);
                 }
                 else if (MyInput.GetButtonUp("Rotate"))
                 {

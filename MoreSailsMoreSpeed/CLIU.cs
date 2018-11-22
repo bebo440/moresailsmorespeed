@@ -157,6 +157,11 @@ internal class CLIU
         return CLIU.Colorize(CLIU.BLUE, text);
     }
 
+    public static string Cyan(string text)
+    {
+        return CLIU.Colorize(CLIU.CYAN, text);
+    }
+
     public static string ColorizeBool(bool setting)
     {
         if (!setting)
@@ -195,9 +200,50 @@ internal class CLIU
         RConsole.Log(CLIU.CONSOLE_PREFIX + msg);
     }
 
+    public static void EchoSetting(string name, bool value, bool def)
+    {
+        CLIU.Echo(string.Concat(new string[]
+        {
+            name,
+            " ",
+            CLIU.ColorizeBool(value),
+            " (default: ",
+            CLIU.ColorizeBool(def),
+            ")"
+        }));
+    }
+
+    public static void EchoSetting(string name, float value, float def)
+    {
+        CLIU.Echo(string.Concat(new string[]
+        {
+            name,
+            " ",
+            CLIU.Blue(value.ToString()),
+            " (default: ",
+            CLIU.Blue(def.ToString()),
+            ")"
+        }));
+    }
+
+    public static void EchoSetting(string name, int value, int def)
+    {
+        CLIU.Echo(string.Concat(new string[]
+        {
+            name,
+            " ",
+            CLIU.Blue(value.ToString()),
+            " (default: ",
+            CLIU.Blue(def.ToString()),
+            ")"
+        }));
+    }
+
     public static string WHITE = "#ffffff";
 
     public static string ORANGE = "#ff8000";
+
+    public static string CYAN = "00ffff";
 
     public static string BLUE = "#0080ff";
 

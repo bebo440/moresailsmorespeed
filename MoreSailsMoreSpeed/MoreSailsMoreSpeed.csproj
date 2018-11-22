@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CLIU.cs" />
-    <Compile Include="MoreSailsMoreSpeed.cs" />
+    <Compile Include="MoreSailsMoreSpeedMod.cs" />
     <Compile Include="Patches\RaftFixedUpdatePatch.cs" />
     <Compile Include="Patches\RaftMaxVelocityPatch.cs" />
     <Compile Include="Patches\SailMouseOverPatch.cs" />
