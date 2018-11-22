@@ -6,7 +6,7 @@ internal class CLIU
 {
     public static bool InterpretBoolFromLastCommand(bool current)
     {
-        string[] array = CLIU.SplitLastCommand();
+        string[] array = SplitLastCommand();
         if (array.Length > 1)
         {
             string a = array[1].ToLower();
@@ -17,7 +17,7 @@ internal class CLIU
 
     public static bool InterpretIntervalFromLastCommand(out Interval_Float interval, float lowerBound, float upperBound, float lowerDefault, float upperDefault, bool optionalMax = true, float upperBoundGap = 1f)
     {
-        string[] array = CLIU.SplitLastCommand();
+        string[] array = SplitLastCommand();
         try
         {
             if (array.Length <= (optionalMax ? 1 : 2))
@@ -51,11 +51,11 @@ internal class CLIU
         }
         catch (FormatException)
         {
-            CLIU.Echo(CLIU.Red("Invalid values, expected a minimum and" + (optionalMax ? " optional " : " ") + "maximum, eg: ") + CLIU.Blue(lowerDefault.ToString() + " " + upperDefault.ToString()));
+            Echo(Red("Invalid values, expected a minimum and" + (optionalMax ? " optional " : " ") + "maximum, eg: ") + Blue(lowerDefault.ToString() + " " + upperDefault.ToString()));
         }
         catch (OverflowException)
         {
-            CLIU.Echo(CLIU.Red("Values are outside the accepted range of ") + CLIU.ColorizeRange(lowerBound.ToString(), upperBound.ToString()));
+            Echo(Red("Values are outside the accepted range of ") + ColorizeRange(lowerBound.ToString(), upperBound.ToString()));
         }
         interval = null;
         return false;
@@ -63,7 +63,7 @@ internal class CLIU
 
     public static bool InterpretFloatFromLastCommand(out float value, float lowerBound, float upperBound, float defaultValue)
     {
-        string[] array = CLIU.SplitLastCommand();
+        string[] array = SplitLastCommand();
         try
         {
             if (array.Length <= 1)
@@ -79,11 +79,11 @@ internal class CLIU
         }
         catch (FormatException)
         {
-            CLIU.Echo(CLIU.Red("Invalid value, expected a decimal number, eg: ") + CLIU.Blue(defaultValue.ToString()));
+            Echo(Red("Invalid value, expected a decimal number, eg: ") + Blue(defaultValue.ToString()));
         }
         catch (OverflowException)
         {
-            CLIU.Echo(CLIU.Red("Value is outside the accepted range of ") + CLIU.ColorizeRange(lowerBound.ToString(), upperBound.ToString()));
+            Echo(Red("Value is outside the accepted range of ") + ColorizeRange(lowerBound.ToString(), upperBound.ToString()));
         }
         value = -1f;
         return false;
@@ -91,7 +91,7 @@ internal class CLIU
 
     public static bool InterpretIntegerFromLastCommand(out int value, int lowerBound, int upperBound, int defaultValue)
     {
-        string[] array = CLIU.SplitLastCommand();
+        string[] array = SplitLastCommand();
         try
         {
             if (array.Length <= 1)
@@ -107,11 +107,11 @@ internal class CLIU
         }
         catch (FormatException)
         {
-            CLIU.Echo(CLIU.Red("Invalid value, expected a number, eg: ") + CLIU.Blue(defaultValue.ToString()));
+            Echo(Red("Invalid value, expected a number, eg: ") + Blue(defaultValue.ToString()));
         }
         catch (OverflowException)
         {
-            CLIU.Echo(CLIU.Red("Value is outside the accepted range of ") + CLIU.ColorizeRange(lowerBound.ToString(), upperBound.ToString()));
+            Echo(Red("Value is outside the accepted range of ") + ColorizeRange(lowerBound.ToString(), upperBound.ToString()));
         }
         value = -1;
         return false;
@@ -121,7 +121,7 @@ internal class CLIU
     {
         if (SceneManager.GetActiveScene().name != Semih_Network.GameSceneName)
         {
-            CLIU.Echo(CLIU.Red("This command only works inside a loaded world."));
+            Echo(Red("This command only works inside a loaded world."));
             return false;
         }
         return true;
@@ -134,52 +134,52 @@ internal class CLIU
 
     public static string Red(string text)
     {
-        return CLIU.Colorize(CLIU.RED, text);
+        return Colorize(RED, text);
     }
 
     public static string Green(string text)
     {
-        return CLIU.Colorize(CLIU.GREEN, text);
+        return Colorize(GREEN, text);
     }
 
     public static string White(string text)
     {
-        return CLIU.Colorize(CLIU.WHITE, text);
+        return Colorize(WHITE, text);
     }
 
     public static string Orange(string text)
     {
-        return CLIU.Colorize(CLIU.ORANGE, text);
+        return Colorize(ORANGE, text);
     }
 
     public static string Blue(string text)
     {
-        return CLIU.Colorize(CLIU.BLUE, text);
+        return Colorize(BLUE, text);
     }
 
     public static string Cyan(string text)
     {
-        return CLIU.Colorize(CLIU.CYAN, text);
+        return Colorize(CYAN, text);
     }
 
     public static string ColorizeBool(bool setting)
     {
         if (!setting)
         {
-            return CLIU.Red("false");
+            return Red("false");
         }
-        return CLIU.Green("TRUE");
+        return Green("TRUE");
     }
 
     public static string ColorizeRange(string min, string max)
     {
         return string.Concat(new string[]
         {
-            CLIU.Blue(min),
-            CLIU.White(" <= "),
+            Blue(min),
+            White(" <= "),
             "x",
-            CLIU.White(" <= "),
-            CLIU.Blue(max)
+            White(" <= "),
+            Blue(max)
         });
     }
 
@@ -197,44 +197,44 @@ internal class CLIU
 
     public static void Echo(string msg)
     {
-        RConsole.Log(CLIU.CONSOLE_PREFIX + msg);
+        RConsole.Log(CONSOLE_PREFIX + msg);
     }
 
     public static void EchoSetting(string name, bool value, bool def)
     {
-        CLIU.Echo(string.Concat(new string[]
+        Echo(string.Concat(new string[]
         {
             name,
             " ",
-            CLIU.ColorizeBool(value),
+            ColorizeBool(value),
             " (default: ",
-            CLIU.ColorizeBool(def),
+            ColorizeBool(def),
             ")"
         }));
     }
 
     public static void EchoSetting(string name, float value, float def)
     {
-        CLIU.Echo(string.Concat(new string[]
+        Echo(string.Concat(new string[]
         {
             name,
             " ",
-            CLIU.Blue(value.ToString()),
+            Blue(value.ToString()),
             " (default: ",
-            CLIU.Blue(def.ToString()),
+            Blue(def.ToString()),
             ")"
         }));
     }
 
     public static void EchoSetting(string name, int value, int def)
     {
-        CLIU.Echo(string.Concat(new string[]
+        Echo(string.Concat(new string[]
         {
             name,
             " ",
-            CLIU.Blue(value.ToString()),
+            Blue(value.ToString()),
             " (default: ",
-            CLIU.Blue(def.ToString()),
+            Blue(def.ToString()),
             ")"
         }));
     }

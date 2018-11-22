@@ -61,7 +61,7 @@
     <Compile Include="Patches\RaftMaxVelocityPatch.cs" />
     <Compile Include="Patches\SailMouseOverPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="ModSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
