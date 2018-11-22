@@ -13,7 +13,7 @@ namespace MoreSailsMoreSpeed
     [ModAuthor("Akitake")]
     [ModIconUrl("https://i.imgur.com/eaGHF1J.png")]
     [ModWallpaperUrl("https://i.imgur.com/D7OvpcL.png")]
-    [ModVersion("1.0.5")]
+    [ModVersion("1.0.6")]
     [RaftVersion("Update 8 (3288722)")]
     public class MoreSailsMoreSpeedMod : Mod
     {
@@ -31,9 +31,9 @@ namespace MoreSailsMoreSpeed
             this.settingsPath = Directory.GetCurrentDirectory() + "\\mods\\MoreSailsMoreSpeed.json";
             this.settings = this.LoadSettings();
             RaftFixedUpdatePatch.rate = this.settings.decayRateExponent;
-            RConsole.registerCommand(typeof(MoreSailsMoreSpeedMod), "Lower all sails", "sailsOpen", new Action(MoreSailsMoreSpeedMod.SailsOpen));
-            RConsole.registerCommand(typeof(MoreSailsMoreSpeedMod), "Raise all sails", "sailsClose", new Action(MoreSailsMoreSpeedMod.SailsClose));
-            RConsole.registerCommand(typeof(MoreSailsMoreSpeedMod), "The exponent x for i/i^x (default: 1.9; constrained to 1 <= x <= 5)", "sailsDecay", new Action(this.SailsDecay));
+            RConsole.registerCommand(typeof(Mod), "Lower all sails", "sailsOpen", new Action(MoreSailsMoreSpeedMod.SailsOpen));
+            RConsole.registerCommand(typeof(Mod), "Raise all sails", "sailsClose", new Action(MoreSailsMoreSpeedMod.SailsClose));
+            RConsole.registerCommand(typeof(Mod), "The exponent x for i/i^x (default: 1.9; constrained to 1 <= x <= 5)", "sailsDecay", new Action(this.SailsDecay));
             CLIU.Echo("loaded!");
         }
 

@@ -243,7 +243,7 @@ internal class CLIU
 
     public static string ORANGE = "#ff8000";
 
-    public static string CYAN = "00ffff";
+    public static string CYAN = "#00ffff";
 
     public static string BLUE = "#0080ff";
 
