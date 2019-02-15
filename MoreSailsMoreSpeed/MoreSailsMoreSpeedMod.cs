@@ -10,8 +10,8 @@ using UnityEngine;
 [ModAuthor("Akitake")]
 [ModIconUrl("https://i.imgur.com/eaGHF1J.png")]
 [ModWallpaperUrl("https://i.imgur.com/D7OvpcL.png")]
-[ModVersion("1.1.0")]
-[RaftVersion("Update 8 (3288722)")]
+[ModVersion("1.2.0")]
+[RaftVersion("Update 9 (3556813)")]
 public class MoreSailsMoreSpeedMod : Mod
 {
     public HarmonyInstance harmony;
