@@ -13,14 +13,6 @@ class SailMouseOverPatch
         }
         if (Helper.LocalPlayerIsWithinDistance(__instance.transform.position, Player.UseDistance) && CanvasHelper.ActiveMenu == MenuType.None)
         {
-            if (!__instance.open)
-            {
-                ___canvas.displayTextManager.ShowText(Helper.GetTerm("Game/Open", false), MyInput.Keybinds["Interact"].MainKey, 0, true);
-            }
-            else
-            {
-                ___canvas.displayTextManager.ShowText(Helper.GetTerm("Game/RotateSmooth2", false), MyInput.Keybinds["Rotate"].MainKey, 0, true);
-            }
             if (MyInput.GetButtonDown("Interact"))
             {
                 if (Semih_Network.IsHost)
